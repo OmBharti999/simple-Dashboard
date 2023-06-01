@@ -1,16 +1,14 @@
 import { VictoryBar, VictoryChart } from "victory";
 
-const data = [
-  { quarter: 0, earnings: 0 },
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 },
-];
+import "./index.css";
 
-function Graph() {
+function Graph({ collection }) {
+  const data = collection.map((obj) => ({
+    quarter: obj.name,
+    earnings: obj.totalEarnings,
+  }));
   return (
-    <section style={{ width: "400px", height: "300px" }}>
+    <section className="graph">
       <VictoryChart>
         <VictoryBar data={data} x="quarter" y="earnings" />
       </VictoryChart>
