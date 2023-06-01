@@ -13,10 +13,14 @@ export const labelsProducer = (data = []) => {
 export const cardArray = (labels, data) => {
   const final = labels.map((i) => {
     let totalEarnings = 0;
+    let logo = "";
     data.map((obj) => {
-      if (obj.airline === i) totalEarnings += Number(obj.price);
+      if (obj.airline === i) {
+        totalEarnings += Number(obj.price);
+        logo = obj.logo;
+      }
     });
-    return { name: i, totalEarnings };
+    return { name: i, totalEarnings, logo };
   });
 
   return final;
