@@ -2,9 +2,17 @@ import React from "react";
 
 import "./index.css";
 
-function Table({ data }) {
+function Table({ data, filter }) {
   const tableHeader = Object.keys(data[0]).filter((key) => key !== "id");
-  console.log("🚀 ~ file: Table.jsx:7 ~ Table ~ tableHeader:", tableHeader);
+
+  const filterData = data.filter((obj) => {
+    if (filter.priceFilter === "all") {
+      return obj;
+    }
+    return filter.priceFilter >= obj.price;
+  });
+  
+  console.log("🚀 ~ file: Table.jsx:15 ~ filterData ~ filterData:", filterData);
   return (
     <table className="table">
       <thead>
@@ -15,7 +23,7 @@ function Table({ data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((obj, index) => (
+        {filterData.map((obj, index) => (
           <tr key={obj.id}>
             {tableHeader.map((field, index) => (
               <td key={obj.id + String(index)}>

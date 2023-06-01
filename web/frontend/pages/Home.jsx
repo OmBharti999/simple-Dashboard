@@ -4,17 +4,21 @@ import { Graph } from "../components/graph";
 import { Filter, Table } from "../components/table";
 import { airLineData } from "./rawData";
 import { cardArray, labelsProducer } from "../utils/airlineData";
+import { useState } from "react";
+import Footer from "../components/footer/Footer";
 
 export default function Home() {
   const airlinelabel = labelsProducer(airLineData);
   const airLineYerlyCollectionCardData = cardArray(airlinelabel, airLineData);
+  const [filter, setFilter] = useState({ dateFilter: "", priceFilter: "all" });
   return (
     <>
       <Header />
       <Listing collection={airLineYerlyCollectionCardData} />
-      <Graph collection={airLineYerlyCollectionCardData}  />
-      <Filter />
-      <Table data={airLineData} />
+      <Graph collection={airLineYerlyCollectionCardData} />
+      <Filter filter={filter} setFilter={setFilter} />
+      <Table data={airLineData} filter={filter} />
+      <Footer />
     </>
   );
 }
