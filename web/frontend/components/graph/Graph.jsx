@@ -8,7 +8,6 @@ const data = [
   { quarter: 4, earnings: 19000 },
 ];
 
-// <>graph</>
 function Graph() {
   return (
     <section style={{ width: "400px", height: "300px" }}>
