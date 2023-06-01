@@ -1,7 +1,7 @@
 header {
-  width: 100vw;
-  background: rgba(58, 40, 40, 0.877);
-  color: white;
+  width: 98vw;
+  background: #27374d;
+  color: #dde6ed;
   height: 70px;
   display: flex;
   justify-content: flex-end;
@@ -15,9 +15,10 @@ button {
 }
 
 header input {
-    width: 30rem;
+  width: 30rem;
 }
-header button{
-    width: 8rem;
-    background: rgba(199, 167, 167, 0.877);
+header button {
+  width: 8rem;
+  color: #27374d;
+  background: #dde6ed;
 }
