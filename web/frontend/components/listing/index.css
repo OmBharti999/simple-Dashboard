@@ -1,0 +1,6 @@
+.listing {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3rem;
+  padding: 1rem 3rem;
+}
