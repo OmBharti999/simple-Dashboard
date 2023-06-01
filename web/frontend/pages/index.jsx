@@ -14,7 +14,9 @@
 // import { trophyImage } from "../assets";
 
 // import { ProductsCard } from "../components";
-import Home from "./Home"
+import Home from "./Home";
+
+import "./index.css";
 
 export default function HomePage() {
   // const { t } = useTranslation();
@@ -91,5 +93,5 @@ export default function HomePage() {
   //     </Layout>
   //   </Page>
   // );
-return <Home/>
+  return <Home />;
 }
