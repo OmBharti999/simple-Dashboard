@@ -1,0 +1,19 @@
+.filter {
+  height: 3rem;
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  margin: 0 2vw;
+}
+
+.filter .select {
+  background: #27374d;
+  color: #dde6ed;
+  width: 50%;
+}
+.filter .date {
+  border-radius: 50px 0 0 50px;
+}
+.filter .price {
+  border-radius: 0 50px 50px 0;
+}
