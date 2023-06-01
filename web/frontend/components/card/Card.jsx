@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-function Card() {
+import "./index.css";
+
+function Card({ data }) {
   return (
-    <div>Card</div>
-  )
+    <section className="card">
+      <div className="card-head">{data.name}</div>
+      <div className="card-body">{data.totalEarnings}</div>
+    </section>
+  );
 }
 
-export default Card
+export default Card;
