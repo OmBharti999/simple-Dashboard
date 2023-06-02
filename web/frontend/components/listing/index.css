@@ -1,3 +1,8 @@
+.main-ls-cards {
+  background: linear-gradient(to right, white, #48668d);
+  box-shadow: 0 0 30px #48668d;
+}
+
 .listing {
   display: flex;
   justify-content: flex-start;
