@@ -1,8 +1,9 @@
-import React from "react";
+import { useEffect } from "react";
+import dayjs from "dayjs";
 
 import "./index.css";
 
-function Table({ data, filter }) {
+function Table({ data, filter, setFilterData }) {
   const tableHeader = Object.keys(data[0]).filter((key) => key !== "id");
 
   const filterData = data.filter((obj) => {
@@ -11,8 +12,19 @@ function Table({ data, filter }) {
     }
     return filter.priceFilter >= obj.price;
   });
-  
-  console.log("🚀 ~ file: Table.jsx:15 ~ filterData ~ filterData:", filterData);
+
+  const filterDataAfterDate = filterData.filter((obj) => {
+    if (!filter.dateFilter) {
+      return obj;
+    }
+    const startDate = dayjs(filter.dateFilter);
+    const endDate = dayjs(obj.dateOfTravel);
+    return endDate.diff(startDate) > 0;
+  });
+  useEffect(() => {
+    setFilterData(filterDataAfterDate);
+  }, [filter]);
+
   return (
     <table className="table">
       <thead>
@@ -23,7 +35,7 @@ function Table({ data, filter }) {
         </tr>
       </thead>
       <tbody>
-        {filterData.map((obj, index) => (
+        {filterDataAfterDate.map((obj, index) => (
           <tr key={obj.id}>
             {tableHeader.map((field, index) => (
               <td key={obj.id + String(index)}>
