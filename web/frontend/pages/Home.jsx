@@ -8,16 +8,18 @@ import { useState } from "react";
 import Footer from "../components/footer/Footer";
 
 export default function Home() {
+  const [filter, setFilter] = useState({ dateFilter: "", priceFilter: "all" });
+  const [filterData, setFilterData] = useState(airLineData);
   const airlinelabel = labelsProducer(airLineData);
   const airLineYerlyCollectionCardData = cardArray(airlinelabel, airLineData);
-  const [filter, setFilter] = useState({ dateFilter: "", priceFilter: "all" });
+  const airLineYerlyCollectionGraphData = cardArray(airlinelabel, filterData);
   return (
     <>
       <Header />
       <Listing collection={airLineYerlyCollectionCardData} />
-      <Graph collection={airLineYerlyCollectionCardData} />
+      <Graph collection={airLineYerlyCollectionGraphData} />
       <Filter filter={filter} setFilter={setFilter} />
-      <Table data={airLineData} filter={filter} />
+      <Table data={airLineData} filter={filter} setFilterData={setFilterData} />
       <Footer />
     </>
   );
