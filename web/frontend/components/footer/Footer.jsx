@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import "./index.css";
 
 function Footer() {
   return (
-    <div>Footer</div>
-  )
+    <footer className="note">
+      <strong>Note:</strong> Data above is created by me its not real.
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

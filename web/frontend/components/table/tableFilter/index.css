@@ -1,3 +1,13 @@
+.filterTilte {
+  padding: 1rem;
+  color: #27374d;
+  /* background: linear-gradient(to right, #3f3046 #bdcee6); */
+  margin: 5px 10%;
+  text-align: center;
+  box-shadow: 5px 8px 13px #7f8fa7;
+  font-size: larger;
+  font-weight: 800;
+}
 .filter {
   height: 3rem;
   width: 95vw;
@@ -17,4 +27,11 @@
 }
 .filter .price {
   border-radius: 0 50px 50px 0;
+}
+.select option {
+  max-width: 200px;
+}
+
+.option{
+  width: 100px;
 }
