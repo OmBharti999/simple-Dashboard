@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import dayjs from "dayjs";
 
 import "./index.css";
+import NotFound from "../../pages/NotFound";
 
 function Table({ data, filter, setFilterData }) {
   const tableHeader = Object.keys(data[0]).filter((key) => key !== "id");
+
   const filterDataForName = data.filter((obj) => {
     const searchedString = filter.airlinesName.toLowerCase();
     if (!searchedString) {
@@ -12,6 +14,7 @@ function Table({ data, filter, setFilterData }) {
     }
     return obj.airline.toLowerCase().includes(searchedString);
   });
+
   const filterData = filterDataForName.filter((obj) => {
     if (filter.priceFilter === "all") {
       return obj;
@@ -27,40 +30,45 @@ function Table({ data, filter, setFilterData }) {
     const endDate = dayjs(obj.dateOfTravel);
     return endDate.diff(startDate) > 0;
   });
+
   useEffect(() => {
     setFilterData(filterDataAfterDate);
   }, [filter]);
 
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          {tableHeader.map((field, index) => (
-            <th key={index}>{field}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {filterDataAfterDate.map((obj, index) => (
-          <tr key={obj.id}>
+    <>
+      {" "}
+      <table className="table">
+        <thead>
+          <tr>
             {tableHeader.map((field, index) => (
-              <td key={obj.id + String(index)}>
-                {field === "logo" ? (
-                  <img
-                    src={obj[field]}
-                    alt="airline Logo"
-                    width="100px"
-                    height="30px"
-                  />
-                ) : (
-                  obj[field]
-                )}
-              </td>
+              <th key={index}>{field}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {filterDataAfterDate.map((obj, index) => (
+            <tr key={obj.id}>
+              {tableHeader.map((field, index) => (
+                <td key={obj.id + String(index)}>
+                  {field === "logo" ? (
+                    <img
+                      src={obj[field]}
+                      alt="airline Logo"
+                      width="100px"
+                      height="30px"
+                    />
+                  ) : (
+                    obj[field]
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {filterDataAfterDate.length === 0 && <NotFound />}
+    </>
   );
 }
 
