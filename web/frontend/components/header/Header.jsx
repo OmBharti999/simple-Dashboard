@@ -4,15 +4,19 @@ import "./index.css";
 
 function Header({ filter, setFilter }) {
   const updateFilter = (e) => {
-    console.log(e.target.value);
     setFilter((prev) => {
       return { ...prev, airlinesName: e.target.value };
+    });
+  };
+  const clearFilter = () => {
+    setFilter((prev) => {
+      return { ...prev, airlinesName: "" };
     });
   };
   return (
     <header>
       <input value={filter.airlinesName} onChange={updateFilter} />
-      <button>Search</button>
+      <button onClick={clearFilter}>Clear</button>
     </header>
   );
 }
