@@ -1,11 +1,17 @@
 import React from "react";
 
-import "./index.css"
+import "./index.css";
 
-function Header() {
+function Header({ filter, setFilter }) {
+  const updateFilter = (e) => {
+    console.log(e.target.value);
+    setFilter((prev) => {
+      return { ...prev, airlinesName: e.target.value };
+    });
+  };
   return (
     <header>
-      <input />
+      <input value={filter.airlinesName} onChange={updateFilter} />
       <button>Search</button>
     </header>
   );

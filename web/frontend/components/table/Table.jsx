@@ -5,8 +5,14 @@ import "./index.css";
 
 function Table({ data, filter, setFilterData }) {
   const tableHeader = Object.keys(data[0]).filter((key) => key !== "id");
-
-  const filterData = data.filter((obj) => {
+  const filterDataForName = data.filter((obj) => {
+    const searchedString = filter.airlinesName.toLowerCase();
+    if (!searchedString) {
+      return obj;
+    }
+    return obj.airline.toLowerCase().includes(searchedString);
+  });
+  const filterData = filterDataForName.filter((obj) => {
     if (filter.priceFilter === "all") {
       return obj;
     }
